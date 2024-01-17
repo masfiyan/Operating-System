@@ -25,6 +25,7 @@ def round_robin(processes, time_quantum):
                     remaining_time[i] = 0
                     queue.append((processes[i][0], time - processes[i][2], time))
                     turnaround_time[i] = time - processes[i][1]
+                    completion_time[i] = time
 
         if all_finished:
             break
@@ -32,6 +33,14 @@ def round_robin(processes, time_quantum):
     print("\nExecution Sequence:")
     for process in queue:
         print("Process {}: {} to {}".format(process[0], process[1], process[2]))
+
+    print("\nProcess Table:")
+    print("-----------------------------------------------------")
+    print("| Process | Arrival Time | Burst Time | Completion Time | Waiting Time | Turnaround Time |")
+    print("-----------------------------------------------------")
+    for i in range(n):
+        print(f"| {processes[i][0]:8} | {processes[i][1]:12} | {processes[i][2]:10} | {completion_time[i]:16} | {waiting_time[i]:13} | {turnaround_time[i]:16} |")
+    print("-----------------------------------------------------")
 
     average_turnaround_time = sum(turnaround_time) / n
     average_waiting_time = sum(waiting_time) / n
