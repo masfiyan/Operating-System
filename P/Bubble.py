@@ -59,5 +59,5 @@ if __name__ == "__main__":
         burst_time = int(input(f"Enter burst time for {name}: "))
         priority = int(input(f"Enter priority for {name}: "))
         processes.append(Process(name, arrival_time, burst_time, priority))
-
+    
     priority_scheduling(processes)

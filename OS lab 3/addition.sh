@@ -11,6 +11,7 @@ sum=0
 
 # Loop through all the parameters and add them to the sum
 for num in "$@"; do
+    echo $num
     sum=$((sum + num))
 done
 
